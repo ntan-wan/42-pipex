@@ -6,20 +6,20 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 15:10:54 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/12 00:34:17 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/12 02:04:52 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	run_parent_child_process(t_pipex *pipex)
+void	execute_cmds(t_pipex *pipex)
 {
 	pipex->pid1 = fork();
-	if (is_child())
-		first_child();
+	if (is_child(pipex ->pid1))
+		first_child_process();
 	pipex->pid2 = fork();
-	if (is_child())
-		second_child();
+	if (is_child(pipex->pid2))
+		second_child_process();
 }
 
 int main(int ac, char **av, char **envp)
@@ -37,7 +37,7 @@ int main(int ac, char **av, char **envp)
 	else
 	{
 		t_pipex_init(ac, av, envp, &pipex);
-		run_parent_child_process(&pipex);
+		execute_cmds(&pipex);
 	}
 	return (0);
 }

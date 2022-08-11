@@ -6,7 +6,7 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:13:49 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/11 23:46:35 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/12 02:10:36 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_pipex
 	int		pipefd[2];
 	int		infile;
 	int		outfile;
-	char	*envp_PATH;
+	char	*envp_path;
 	char	**cmd_paths;
 	char	**cmd_args;
 	char	*cmd;
@@ -62,7 +62,10 @@ void	t_pipex_init(int ac, char **av, char **envp, t_pipex *pipex);
 void	print_error_and_exit(char *message);
 int		is_error(int status);
 
-/* path */
-char	*find_PATH(char **envp);
+/* paths */
+char	*find_envp_path(char **envp);
+char	**find_cmd_paths(char *envp_path);
 
+/* childs */
+int		is_child(int status);
 #endif

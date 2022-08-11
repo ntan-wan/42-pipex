@@ -27,7 +27,7 @@ void	t_pipex_init(int ac, char **av, char **envp, t_pipex *pipex)
 		print_error_and_exit("outfile");
 	if (is_error(pipe(pipex->pipefd)))
 		print_error_and_exit("pipe");
-	pipex->envp_PATH = find_PATH(envp);
-	pipex->cmd_paths = find_cmd_paths(pipex->envp_PATH);
+	pipex->envp_path = find_envp_path(envp);
+	pipex->cmd_paths = find_cmd_paths(pipex->envp_path);
 }
 
