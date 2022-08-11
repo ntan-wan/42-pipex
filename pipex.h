@@ -6,7 +6,7 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:13:49 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/11 15:56:35 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/11 23:46:35 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,47 @@
 
 	errno.h + string.h -> char *strerror(int errnum)
 	- Display error message associated with the error number.
+
+	stdio.h -> void perror(const char *s)
+	- Print custom message title followed by error
+	error message.
+
+	unistd.h -> pid_t fork(void)
+	- Allow our process(parent) to create
+	new process(child).
  */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# define OUTFILE 0 
-# define INFILE 1
-
-# define STDIN 0
-# define STDOUT 1
-# define STDERR 2
-
-# include <errno.h>
 # include <fcntl.h>
-# include "libft/libft.h"
-# include <stdlib.h>
 # include <stdio.h>
-# include <string.h>
-# include <sys/stat.h>
+# include <stdlib.h>
 # include <unistd.h>
+# include <sys/stat.h>
+# include "libft/libft.h"
 
-char	*find_cmd_path(char **envp, char *cmd);
+typedef struct s_pipex
+{
+	pid_t	pid1;
+	pid_t	pid2;
+	int		pipefd[2];
+	int		infile;
+	int		outfile;
+	char	*envp_PATH;
+	char	**cmd_paths;
+	char	**cmd_args;
+	char	*cmd;
+}t_pipex;
 
 /* utils */
-void	free_strs(char *str, char **strs);
+void	t_pipex_init(int ac, char **av, char **envp, t_pipex *pipex);
+
+/* errors */
+void	print_error_and_exit(char *message);
+int		is_error(int status);
+
+/* path */
+char	*find_PATH(char **envp);
+
 #endif
