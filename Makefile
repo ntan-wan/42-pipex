@@ -40,11 +40,11 @@ $(NAME) : $(LIBFT_LIB)
 
 clean :
 	@rm -rf $(OBJS_DIR)
-	@echo "$(RED)Removed: obj files ($(NAME))$(COLOR_OFF)"
+	@echo "$(RED)Removed : obj files ($(NAME))$(COLOR_OFF)"
 
 fclean: clean
 	@rm -rf $(NAME)
-	@echo "$(RED)Removed $(NAME)$(COLOR_OFF)"
+	@echo "$(RED)Removed : $(NAME).exe$(COLOR_OFF)"
 	@make fclean -C $(LIBFT_DIR)
 
 re : fclean all
