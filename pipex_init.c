@@ -17,17 +17,19 @@
 
 #include "pipex.h"
 
-void	t_pipex_init(int ac, char **av, char **envp, t_pipex *pipex)
+void	s_pipex_init(int ac, char **av, char **envp, t_pipex *pipex)
 {
-	pipex->infile = open(av[1], O_RDONLY);
-	if (is_error(pipex->infile))
-		print_error_and_exit("infile");
-	pipex->outfile = open(av[ac - 1], O_CREAT | O_RDWR | O_TRUNC, 0644);
-	if (is_error(pipex->outfile))
-		print_error_and_exit("outfile");
-	if (is_error(pipe(pipex->pipefd)))
-		print_error_and_exit("pipe");
-	pipex->envp_path = find_envp_path(envp);
-	pipex->cmd_paths = find_cmd_paths(pipex->envp_path);
-}
+	char	*infile;
+	char	*outfile;
 
+	infile = av[1];
+	outfile = av[ac - 1];
+	pipex->infile_fd = open(infile, O_RDONLY);
+	if (is_error(pipex->infile_fd))
+		print_error_and_exit(infile);
+	pipex->outfile_fd = open(outfile, O_CREAT | O_RDWR | O_TRUNC, 0644);
+	if (is_error(pipex->outfile_fd))
+		print_error_and_exit(outfile);
+	pipex->envp_path = find_envp_path(envp);
+	pipex->all_cmd_paths = find_cmd_paths(pipex->envp_path);
+}
