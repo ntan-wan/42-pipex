@@ -6,7 +6,7 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 15:10:54 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/12 13:09:45 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:30:59 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	run_childs_process(char **av, char **envp, t_pipex *pipex)
 {
 	pipex->pid1 = fork();
 	if (is_child(pipex ->pid1))
-		first_child_process(av , envp, pipex);
+		first_child_process(av, envp, pipex);
 	pipex->pid2 = fork();
 	if (is_child(pipex->pid2))
 		second_child_process(av, envp, pipex);
@@ -43,10 +43,10 @@ void	wait_childs_process(t_pipex *pipex)
 	waitpid(pipex->pid2, NULL, 0);
 }
 
-int main(int ac, char **av, char **envp)
+int	main(int ac, char **av, char **envp)
 {
-	t_pipex pipex;
-	
+	t_pipex	pipex;
+
 	if (ac != 5)
 	{
 		if (ac < 5)
