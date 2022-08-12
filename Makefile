@@ -32,23 +32,28 @@ $(LIBFT_LIB) :
 
 $(OBJS_DIR)%.o : %.c
 	@make -p $(OBJS_DIR)
-	@(CC) (CFLAGS) -c $< -o $@
+	@(CC) (CFLAGS) -I. -c $< -o $@
 
-$(NAME) : $(LIBFT_LIB)
+$(NAME) : $(LIBFT_LIB) 
 	@$(CC) $(CFLAGS) $(SRCS) $(LIBFT_DIR)$(LIBFT_LIB) -o $(NAME)
-	@echo "$(GREEN)pipex done!$(COLOR_OFF)"
+	@echo "$(GREEN)pipex.exe Done!$(COLOR_OFF)"
 
 clean :
 	@rm -rf $(OBJS_DIR)
 	@echo "$(RED)Removed : obj files ($(NAME))$(COLOR_OFF)"
+	@make clean -C $(LIBFT_DIR)
 
 fclean: clean
 	@rm -rf $(NAME)
 	@echo "$(RED)Removed : $(NAME).exe$(COLOR_OFF)"
-	@make fclean -C $(LIBFT_DIR)
+	@rm -rf libft/libft.a
+	@echo "$(RED)Removed : libft.a$(COLOR_OFF)"
+	@rm -rf libft/ft_printf/libftprintf.a
+	@echo "$(RED)Removed : libftprinf.a$(COLOR_OFF)"
 
 re : fclean all
 
-test:
-	make bonus -C libft
-	gcc *.c libft/libft.a -o pipex && ./pipex in.txt "ls" "wc -l" out.txt && cat out.txt
+#test:
+#	./pipex in.txt "ls" "wc -l" out.txt && cat out.txt
+
+.PHONY : all clean fclean re test

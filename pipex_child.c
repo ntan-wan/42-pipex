@@ -6,7 +6,7 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 08:35:07 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/12 15:32:21 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/12 22:31:11 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	first_child_process(char **av, char **envp, t_pipex *pipex)
 	if (!pipex->cmd_path)
 	{
 		free_child(pipex);
-		print_error_and_exit("command");
+		print_error_and_exit("command not found");
 	}
 	execve(pipex->cmd_path, pipex->cmd_args, envp);
 }
@@ -44,7 +44,7 @@ void	second_child_process(char **av, char **envp, t_pipex *pipex)
 	if (!pipex->cmd_path)
 	{
 		free_child(pipex);
-		print_error_and_exit("command");
+		print_error_and_exit("command not found");
 	}
 	execve(pipex->cmd_path, pipex->cmd_args, envp);
 }
