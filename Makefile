@@ -53,7 +53,7 @@ fclean: clean
 
 re : fclean all
 
-#test:
-#	./pipex in.txt "ls" "wc -l" out.txt && cat out.txt
+test:
+	./pipex in.txt "cat" "ls" out.txt && cat out.txt
 
 .PHONY : all clean fclean re test
