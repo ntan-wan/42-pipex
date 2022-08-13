@@ -3,7 +3,7 @@ NAME = pipex
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = main.c \
+SRCS = mandatory_main.c \
 	pipex_init.c \
 	pipex_child.c \
 	pipex_cmd.c \
