@@ -47,6 +47,7 @@ void	run_childs_process(char **av, char **envp, t_pipex_bonus *p)
 	{
 		redirect(p, read_end, write_end);
 		close_pipes(p);
+		//
 		p->cmd_args = split_cmd(av[2 + p->here_doc + p->child_index]);
 		p->cmd_path = get_cmd_path(p->all_cmd_paths, p->cmd_args[0]);
 		if (!p->cmd_path)

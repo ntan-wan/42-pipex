@@ -6,7 +6,7 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:35:00 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/15 15:59:51 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/15 16:58:19 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,11 @@ void	here_doc(char *limiter, t_pipex_bonus *pipex)
 		print_error_and_exit("here_doc");
 	while (1)
 	{
-		line = get_next_line(STDIN);
 		write(STDOUT, "heredoc> ", 9);
+		line = get_next_line(STDIN);
 		if (ft_strncmp(limiter, line, limiter_len) == 0)
 			break ;
 		write(temp_fd, line, ft_strlen(line));
-		//write(temp_fd, "\n", 1);
 		free(line);
 	}
 	free(line);
