@@ -68,7 +68,7 @@ fclean: clean
 
 re : fclean all
 
-.PHONY : all bonus clean fclean re test
+.PHONY : all bonus clean fclean re test heredoc
 
 #test your commands here.
 TEST_CMDS = here_doc eof "cat" "cat" "cat"
