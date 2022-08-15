@@ -6,15 +6,15 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 08:35:07 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/13 10:02:26 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/14 20:40:36 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	is_child(int status)
+int	is_child(pid_t pid)
 {
-	if (status == 0)
+	if (pid == 0)
 		return (1);
 	return (0);
 }
