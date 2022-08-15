@@ -6,7 +6,7 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:15:12 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/15 17:27:32 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/15 17:59:48 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	get_infile_fd(char **av, t_pipex_bonus *pipex)
 	limiter = av[2];
 	if (is_here_doc(infile))
 	{
-		//
 		pipex->here_doc = 1;
 		here_doc(limiter, pipex);
 	}
 	else
 	{
+		pipex->here_doc = 0;
 		pipex->infile_fd = open(infile, O_RDONLY);
 		if (is_error(pipex->infile_fd))
 			print_error_and_exit(infile);
@@ -35,7 +35,7 @@ void	get_infile_fd(char **av, t_pipex_bonus *pipex)
 
 void	get_outfile_fd(int ac, char **av, t_pipex_bonus *pipex)
 {
-	char *outfile;
+	char	*outfile;
 
 	outfile = av[ac - 1];
 	if (pipex->here_doc)

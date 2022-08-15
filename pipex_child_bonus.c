@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p_child_bonus.c                                :+:      :+:    :+:   */
+/*   pipex_child_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/14 20:27:23 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/15 09:17:55 by ntan-wan         ###   ########.fr       */
+/*   Created: 2022/08/15 18:36:49 by ntan-wan          #+#    #+#             */
+/*   Updated: 2022/08/15 18:39:11 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	run_childs_process(char **av, char **envp, t_pipex_bonus *p)
 	{
 		redirect(p, read_end, write_end);
 		close_pipes(p);
-		//
 		p->cmd_args = split_cmd(av[2 + p->here_doc + p->child_index]);
 		p->cmd_path = get_cmd_path(p->all_cmd_paths, p->cmd_args[0]);
 		if (!p->cmd_path)

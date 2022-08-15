@@ -6,7 +6,7 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 07:25:00 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/15 14:44:10 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/15 18:42:07 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	free_parent(t_pipex_bonus *pipex)
 	free(pipex->pipefd_storage);
 }
 
- void	free_child(t_pipex_bonus *pipex)
+void	free_child(t_pipex_bonus *pipex)
 {
 	int	i;
 

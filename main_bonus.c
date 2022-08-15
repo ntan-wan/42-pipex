@@ -6,7 +6,7 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:40:52 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/15 16:13:39 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/15 17:58:52 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,21 @@ int	main(int ac, char **av, char **envp)
 {
 	t_pipex_bonus	pipex;
 
-	//
-	//if (argc < args_in(argv[1], &pipex))
-	//	return (msg(ERR_INPUT));
-	get_infile_fd(av, &pipex);
-	get_outfile_fd(ac, av, &pipex);
-	pipex_init_bonus(ac, envp, &pipex);
-	create_pipes(&pipex);
-	while (++(pipex.child_index) < pipex.total_cmds)
-		run_childs_process(av, envp, &pipex);
-	waitpid(-1, NULL, 0);
-	free_parent(&pipex);
+	if (ac < 5)
+	{
+		ft_putstr_fd("Error: too few arguments!\n", STDERR);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		get_infile_fd(av, &pipex);
+		get_outfile_fd(ac, av, &pipex);
+		pipex_init_bonus(ac, envp, &pipex);
+		create_pipes(&pipex);
+		while (++(pipex.child_index) < pipex.total_cmds)
+			run_childs_process(av, envp, &pipex);
+		waitpid(-1, NULL, 0);
+		free_parent(&pipex);
+	}
 	return (0);
 }

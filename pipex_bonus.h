@@ -6,7 +6,7 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:44:30 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/15 14:37:50 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/15 17:36:49 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 # define STDIN 0
 # define STDOUT 1
+# define STDERR 2
 
 typedef struct s_pipex_bonus
 {

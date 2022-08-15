@@ -71,7 +71,7 @@ re : fclean all
 .PHONY : all bonus clean fclean re test
 
 #test your commands here.
-TEST_CMDS = here_doc eof "cat" "cat" "cat"
+TEST_CMDS ="cat" "cat" "cat"
 
 test:
 	./pipex in.txt $(TEST_CMDS) out.txt && cat out.txt
