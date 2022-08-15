@@ -49,7 +49,7 @@ PRINTF_LIB = libftprintf.a
 
 GET_NEXT_LINE_DIR =  get_next_line/
 GET_NEXT_LINE_SRCS = get_next_line_bonus.c \
-					 get_next_line_utils_bonus.c
+					get_next_line_utils_bonus.c
 GET_NEXT_LINE_OBJS = $(GET_NEXT_LINE_SRCS:.c=.o)
 GET_NEXT_LINE_OBJS_PREFIXED = $(addprefix $(OBJS_DIR), $(GET_NEXT_LINE_OBJS))
 

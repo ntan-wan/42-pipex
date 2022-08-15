@@ -6,7 +6,7 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:44:30 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/15 10:05:32 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/15 14:37:50 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,20 @@ typedef struct s_pipex_bonus
 	int		total_pipes_ends;
 	int		*pipefd_storage;
 	int		child_index;
-}	t_pipex_bonus
+}	t_pipex_bonus;
 
 /* main */
 void	close_pipes(t_pipex_bonus *pipex);
 
+/* child */
+void	run_childs_process(char **av, char **envp, t_pipex_bonus *p);
+
 /* init */
-void	pipex_init_bonus();
+void	pipex_init_bonus(int ac, char **envp, t_pipex_bonus *pipex);
 
 /* file */
-void	get_infile_fd(char **av, t_pipex_bonus pipex);
-void	get_outfile_fd(int ac, char **av, t_pipex_bonus pipex);
+void	get_infile_fd(char **av, t_pipex_bonus *pipex);
+void	get_outfile_fd(int ac, char **av, t_pipex_bonus *pipex);
 
 /* path */
 char	*find_envp_path(char **envp);
@@ -68,6 +71,4 @@ char	**split_cmd(char *cmd);
 /* free */
 void	free_parent(t_pipex_bonus *pipex);
 void	free_child(t_pipex_bonus *pipex);
-
-
 #endif

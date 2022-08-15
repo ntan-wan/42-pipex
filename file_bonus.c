@@ -6,7 +6,7 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:15:12 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/14 07:04:43 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/15 11:38:55 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ void	get_outfile_fd(int ac, char **av, t_pipex_bonus *pipex)
 		pipex->outfile_fd = open(outfile, O_CREAT | O_TRUNC | O_APPEND, 0644);
 	else
 		pipex->outfile_fd = open(outfile, O_CREAT | O_TRUNC | O_RDWR, 0644);
-	if (is_error(pipex_outfile_fd))
+	if (is_error(pipex->outfile_fd))
 		print_error_and_exit(outfile);
 }

@@ -11,6 +11,16 @@ SRCS = main_mandatory.c \
 	pipex_free.c \
 	pipex_path.c
 
+BONUS_SRCS = main_bonus.c \
+	file_bonus.c \
+	here_doc_bonus.c \
+	pipex_child_bonus.c \
+	pipex_cmd_bonus.c \
+	pipex_error_bonus.c \
+	pipex_free_bonus.c \
+	pipex_init_bonus.c \
+	pipex_path_bonus.c
+
 OBJS_DIR = objs/
 OBJS_M = $(SRCS:.c=.o)
 OBJS_M_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJS_M))
@@ -25,6 +35,7 @@ GREEN=\033[0;32m
 YELLOW=\033[0;33m
 CYAN=\033[0;36m
 
+
 all : $(NAME)
 
 $(LIBFT_LIB) :
@@ -37,6 +48,10 @@ $(OBJS_DIR)%.o : %.c
 $(NAME) : $(LIBFT_LIB) 
 	@$(CC) $(CFLAGS) $(SRCS) $(LIBFT_DIR)$(LIBFT_LIB) -o $(NAME)
 	@echo "$(GREEN)pipex.exe Done!$(COLOR_OFF)"
+
+bonus: $(LIBFT_LIB)
+	@$(CC) $(CFLAGS) $(BONUS_SRCS) $(LIBFT_DIR)$(LIBFT_LIB) -o $(NAME)
+	@echo "$(GREEN)(bonus) pipex.exe Done!$(COLOR_OFF)"
 
 clean :
 	@rm -rf $(OBJS_DIR)
@@ -53,7 +68,13 @@ fclean: clean
 
 re : fclean all
 
-test:
-	./pipex in.txt "cat" "ls" out.txt && cat out.txt
+.PHONY : all bonus clean fclean re test
 
-.PHONY : all clean fclean re test
+#test your commands here.
+TEST_CMDS = here_doc eof "cat" "cat" "cat"
+
+test:
+	./pipex in.txt $(TEST_CMDS) out.txt && cat out.txt
+
+heredoc:
+	./pipex $(TEST_CMDS) out.txt && cat out.txt

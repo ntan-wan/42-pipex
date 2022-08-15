@@ -37,8 +37,8 @@ static void	redirect(t_pipex_bonus *p, int read_end, int write_end)
 
 void	run_childs_process(char **av, char **envp, t_pipex_bonus *p)
 {
-	int	*read_end;
-	int	*write_end;
+	int	read_end;
+	int	write_end;
 
 	read_end = p->pipefd_storage[2 * p->child_index - 2];
 	write_end = p->pipefd_storage[2 * p->child_index + 1];

@@ -6,11 +6,18 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:35:00 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/15 10:03:34 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/15 15:59:51 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
+
+int	is_here_doc(char *infile)
+{
+	if (ft_strncmp("here_doc", infile, 9) == 0)
+		return (1);
+	return (0);
+}
 
 int	args_in(char *arg, t_pipex_bonus *pipex)
 {
@@ -26,38 +33,37 @@ int	args_in(char *arg, t_pipex_bonus *pipex)
 	}
 }
 
-int	is_here_doc(char *infile)
+//
+//if (get_next_line(0, &buf) < 0)
+//	exit(EXIT_FAILURE);
+void	here_doc(char *limiter, t_pipex_bonus *pipex)
 {
-	if (ft_strncmp("here_doc", infile, 9) == 0)
-		return (1);
-	return (0);
-}
+	int		temp_fd;
+	int		limiter_len;
+	char	*temp_file;
+	char	*line;
 
-void	here_doc(char *argv, t_pipex_bonus *pipex)
-{
-	int		file;
-	char	*buf;
-
-	file = open(".heredoc_tmp", O_CREAT | O_WRONLY | O_TRUNC, 0644);
-	if (file < 0)
-		msg_error(ERR_HEREDOC);
+	temp_file = ".heredoc_tmp";
+	temp_fd = open(temp_file, O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	limiter_len = ft_strlen(limiter);
+	if (is_error(temp_fd))
+		print_error_and_exit("here_doc");
 	while (1)
 	{
-		write(1, "heredoc> ", 9);
-		if (get_next_line(0, &buf) < 0)
-			exit(1);
-		if (!ft_strncmp(argv, buf, ft_strlen(argv) + 1))
+		line = get_next_line(STDIN);
+		write(STDOUT, "heredoc> ", 9);
+		if (ft_strncmp(limiter, line, limiter_len) == 0)
 			break ;
-		write(file, buf, ft_strlen(buf));
-		write(file, "\n", 1);
-		free(buf);
+		write(temp_fd, line, ft_strlen(line));
+		//write(temp_fd, "\n", 1);
+		free(line);
 	}
-	free(buf);
-	close(file);
-	pipex->infile = open(".heredoc_tmp", O_RDONLY);
-	if (pipex->infile < 0)
+	free(line);
+	close(temp_fd);
+	pipex->infile_fd = open(temp_file, O_RDONLY);
+	if (is_error(pipex->infile_fd))
 	{
-		unlink(".heredoc_tmp");
-		msg_error(ERR_HEREDOC);
+		unlink(temp_file);
+		print_error_and_exit(temp_file);
 	}
 }

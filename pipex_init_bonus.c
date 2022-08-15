@@ -6,7 +6,7 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 23:45:26 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/14 21:14:09 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/15 11:41:20 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	clear_all(t_pipex_bonus *pipex)
 	close(pipex->outfile_fd);
 	if (pipex->here_doc)
 		unlink(".heredoc_tmp");
-	free(pipex->pipefd_storage):
+	free(pipex->pipefd_storage);
 	print_error_and_exit("envp");
 }
 
