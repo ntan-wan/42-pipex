@@ -6,11 +6,11 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 08:35:07 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/16 11:51:55 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/17 07:22:15 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 int	is_child(pid_t pid)
 {

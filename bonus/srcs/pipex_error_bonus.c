@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_cmd.c                                        :+:      :+:    :+:   */
+/*   pipex_error_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/12 15:33:13 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/12 15:33:26 by ntan-wan         ###   ########.fr       */
+/*   Created: 2022/08/13 15:25:50 by ntan-wan          #+#    #+#             */
+/*   Updated: 2022/08/17 07:26:58 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex_bonus.h"
 
-char	**split_cmd(char *cmd)
+int	is_error(int status)
 {
-	char	**splited_cmd;
+	if (status == -1)
+		return (1);
+	return (0);
+}
 
-	splited_cmd = ft_split(cmd, ' ');
-	return (splited_cmd);
+void	print_error_and_exit(char *message)
+{
+	perror(message);
+	exit(EXIT_FAILURE);
 }

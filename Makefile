@@ -21,6 +21,9 @@ BONUS_SRCS = main_bonus.c \
 	pipex_init_bonus.c \
 	pipex_path_bonus.c
 
+SRCS_PREFIXED = $(addprefix mandatory/srcs/, $(SRCS))
+BONUS_SRCS_PREFIXED = $(addprefix bonus/srcs/, $(BONUS_SRCS))
+
 OBJS_DIR = objs/
 OBJS_M = $(SRCS:.c=.o)
 OBJS_M_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJS_M))
@@ -42,15 +45,15 @@ $(LIBFT_LIB) :
 	@make bonus -C $(LIBFT_DIR)
 
 $(OBJS_DIR)%.o : %.c
-	@make -p $(OBJS_DIR)
+	@mkdir -p $(OBJS_DIR)
 	@(CC) (CFLAGS) -I. -c $< -o $@
 
 $(NAME) : $(LIBFT_LIB) 
-	@$(CC) $(CFLAGS) $(SRCS) $(LIBFT_DIR)$(LIBFT_LIB) -o $(NAME)
+	@$(CC) $(CFLAGS) -Imandatory/includes $(SRCS_PREFIXED) $(LIBFT_DIR)$(LIBFT_LIB) -o $(NAME)
 	@echo "$(GREEN)pipex.exe Done!$(COLOR_OFF)"
 
 bonus: $(LIBFT_LIB)
-	@$(CC) $(CFLAGS) $(BONUS_SRCS) $(LIBFT_DIR)$(LIBFT_LIB) -o $(NAME)
+	@$(CC) $(CFLAGS) -Ibonus/includes $(BONUS_SRCS_PREFIXED) $(LIBFT_DIR)$(LIBFT_LIB) -o $(NAME)
 	@echo "$(GREEN)(bonus) pipex.exe Done!$(COLOR_OFF)"
 
 clean :

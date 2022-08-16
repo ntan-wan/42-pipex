@@ -6,7 +6,7 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 15:29:32 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/12 15:29:54 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/17 07:23:37 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 	who ->					user	group	others
  */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 void	s_pipex_init(int ac, char **av, char **envp, t_pipex *pipex)
 {

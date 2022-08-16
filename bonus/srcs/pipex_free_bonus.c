@@ -6,11 +6,11 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 07:25:00 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/15 18:42:07 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/17 07:27:12 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "../includes/pipex_bonus.h"
 
 void	free_parent(t_pipex_bonus *pipex)
 {

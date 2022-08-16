@@ -6,7 +6,7 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:44:30 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/15 17:36:49 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/17 07:28:20 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include "libft/libft.h"
+# include "../../libft/libft.h"
 
 # define STDIN 0
 # define STDOUT 1

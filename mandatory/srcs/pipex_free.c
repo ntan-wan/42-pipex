@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_error_bonus.c                                :+:      :+:    :+:   */
+/*   pipex_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/13 15:25:50 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/13 15:27:16 by ntan-wan         ###   ########.fr       */
+/*   Created: 2022/08/12 15:34:36 by ntan-wan          #+#    #+#             */
+/*   Updated: 2022/08/17 07:23:19 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "../includes/pipex.h"
 
-int	is_error(int status)
+void	free_parent(t_pipex *pipex)
 {
-	if (status == -1)
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	close(pipex->infile_fd);
+	close(pipex->outfile_fd);
+	while (pipex->all_cmd_paths[i])
+	{
+		free(pipex->all_cmd_paths[i]);
+		i++;
+	}
+	free(pipex->all_cmd_paths);
 }
 
-void	print_error_and_exit(char *message)
+void	free_child(t_pipex *pipex)
 {
-	perror(message);
-	exit(EXIT_FAILURE);
+	int	i;
+
+	i = 0;
+	while (pipex->cmd_args[i])
+	{
+		free(pipex->cmd_args[i]);
+		i++;
+	}
+	free(pipex->cmd_args);
+	free(pipex->cmd_path);
 }

@@ -6,11 +6,11 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 15:35:02 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/12 15:35:27 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/17 07:23:00 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 int	is_error(int status)
 {
