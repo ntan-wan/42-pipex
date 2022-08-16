@@ -6,7 +6,7 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:40:52 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/15 17:58:52 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/16 11:21:07 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	main(int ac, char **av, char **envp)
 		create_pipes(&pipex);
 		while (++(pipex.child_index) < pipex.total_cmds)
 			run_childs_process(av, envp, &pipex);
+		close_pipes(&pipex);
 		waitpid(-1, NULL, 0);
 		free_parent(&pipex);
 	}
