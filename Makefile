@@ -70,8 +70,12 @@ re : fclean all
 
 .PHONY : all bonus clean fclean re test heredoc
 
-#test your commands here.
-TEST_CMDS = here_doc eof "cat" "cat" "cat"
+# Test your commands here.
+# Mandatory = write two commands only.
+# Bonus = start with "here_doc", then a delimter (eg: "eof"),
+# then write as many as commands you like.
+
+TEST_CMDS = here_doc eof cat cat cat cat cat
 
 test:
 	./pipex in.txt $(TEST_CMDS) out.txt && cat out.txt

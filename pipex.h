@@ -6,7 +6,7 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:13:49 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/12 13:23:34 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/16 11:57:02 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ typedef struct s_pipex
 	char	**cmd_args;
 	char	*cmd_path;
 }t_pipex;
+
+/* main */
+void	close_pipe(t_pipex *pipex);
 
 /* init */
 void	s_pipex_init(int ac, char **av, char **envp, t_pipex *pipex);
