@@ -74,14 +74,20 @@ re : fclean all
 .PHONY : all bonus clean fclean re test heredoc
 
 # Test your commands here.
-# Mandatory = write two commands only.
-# Bonus = start with "here_doc", then a delimter (eg: "eof"),
-# then write as many as commands you like.
 
+# Mandatory = write two commands only.
+IN = in.txt
+OUT = out.txt
+
+# Bonus = define your limiter here.
+LIMITER = eof
+
+# Mandatory = write 2 commands only.
+# Bonus = write as many commands as you like.
 TEST_CMDS = cat cat cat cat
 
 test:
-	./pipex in.txt $(TEST_CMDS) out.txt && cat out.txt
+	./pipex $(IN) $(TEST_CMDS) $(OUT) && cat $(OUT)
 
 heredoc:
-	./pipex $(TEST_CMDS) out.txt && cat out.txt
+	./pipex here_doc $(LIMITER) $(TEST_CMDS) $(OUT) && cat $(OUT)
