@@ -6,13 +6,13 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:15:12 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/17 07:25:05 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:33:31 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
 
-void	get_infile_fd(char **av, t_pipex_bonus *pipex)
+void	get_infile_fd(int ac, char **av, t_pipex_bonus *pipex)
 {
 	char	*infile;
 	char	*limiter;
@@ -22,7 +22,7 @@ void	get_infile_fd(char **av, t_pipex_bonus *pipex)
 	if (is_here_doc(infile))
 	{
 		pipex->here_doc = 1;
-		here_doc(limiter, pipex);
+		here_doc(ac, limiter, pipex);
 	}
 	else
 	{

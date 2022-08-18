@@ -6,7 +6,7 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:35:00 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/17 13:33:04 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:42:50 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,19 @@ int	is_here_doc(char *infile)
 	return (0);
 }
 
-static void	here_doc_process(char *limiter, char **line, int temp_fd)
+static void	here_doc_process(int ac, char *limiter, char **line, int temp_fd)
 {
 	int		limiter_len;
 	char	*limiter_with_null;
+	int		i;
 
 	limiter_len = ft_strlen(limiter);
 	limiter_with_null = ft_strjoin(limiter, "\n");
 	while (1)
 	{
+		i = 0;
+		while (i++ < ac - 5)
+			write(STDOUT, "pipe ", 5);
 		write(STDOUT, "heredoc> ", 9);
 		*line = get_next_line(STDIN);
 		if (ft_strncmp(limiter_with_null, *line, limiter_len + 1) == 0)
@@ -40,7 +44,7 @@ static void	here_doc_process(char *limiter, char **line, int temp_fd)
 	close(temp_fd);
 }
 
-void	here_doc(char *limiter, t_pipex_bonus *pipex)
+void	here_doc(int ac, char *limiter, t_pipex_bonus *pipex)
 {
 	int		temp_fd;
 	char	*temp_file;
@@ -50,7 +54,7 @@ void	here_doc(char *limiter, t_pipex_bonus *pipex)
 	temp_fd = open(temp_file, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (is_error(temp_fd))
 		print_error_and_exit("here_doc");
-	here_doc_process(limiter, &line, temp_fd);
+	here_doc_process(ac, limiter, &line, temp_fd);
 	pipex->infile_fd = open(temp_file, O_RDONLY);
 	if (is_error(pipex->infile_fd))
 	{

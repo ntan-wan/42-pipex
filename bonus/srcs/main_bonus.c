@@ -6,7 +6,7 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:40:52 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/17 07:25:52 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:15:39 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(int ac, char **av, char **envp)
 	}
 	else
 	{
-		get_infile_fd(av, &pipex);
+		get_infile_fd(ac, av, &pipex);
 		get_outfile_fd(ac, av, &pipex);
 		pipex_init_bonus(ac, envp, &pipex);
 		create_pipes(&pipex);

@@ -6,7 +6,7 @@
 /*   By: ntan-wan <ntan-wan@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:44:30 by ntan-wan          #+#    #+#             */
-/*   Updated: 2022/08/17 07:28:20 by ntan-wan         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:24:04 by ntan-wan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	run_childs_process(char **av, char **envp, t_pipex_bonus *p);
 void	pipex_init_bonus(int ac, char **envp, t_pipex_bonus *pipex);
 
 /* file */
-void	get_infile_fd(char **av, t_pipex_bonus *pipex);
+void	get_infile_fd(int ac, char **av, t_pipex_bonus *pipex);
 void	get_outfile_fd(int ac, char **av, t_pipex_bonus *pipex);
 
 /* path */
@@ -64,7 +64,7 @@ void	print_error_and_exit(char *message);
 //
 int		args_in(char *arg, t_pipex_bonus *pipex);
 int		is_here_doc(char *infile);
-void	here_doc(char *argv, t_pipex_bonus *pipex);
+void	here_doc(int ac, char *argv, t_pipex_bonus *pipex);
 
 /* cmd */
 char	**split_cmd(char *cmd);

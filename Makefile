@@ -78,7 +78,7 @@ re : fclean all
 # Bonus = start with "here_doc", then a delimter (eg: "eof"),
 # then write as many as commands you like.
 
-TEST_CMDS = here_doc eof cat cat cat cat cat
+TEST_CMDS = cat cat cat cat
 
 test:
 	./pipex in.txt $(TEST_CMDS) out.txt && cat out.txt
